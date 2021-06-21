@@ -16,201 +16,21 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
-  <link rel="stylesheet" href="styles.css">
   <!-- Load jQuery and PapaParse to read data from a CSV file -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
   <script src="/js/leaflet-0.7.2/leaflet.ajax.min.js"></script>
-
+  <link rel="stylesheet" href="styles/styles.css">
   <!-- Position the map with Cascading Style Sheet (CSS) -->
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-    }
-
-    #map {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-    }
-  </style>
-  <style>
-    
-    .info {
-      padding: 6px 8px;
-      font: 14px/16px Arial, Helvetica, sans-serif;
-      background: white;
-      background: rgba(255, 255, 255, 0.8);
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-      border-radius: 5px;
-    }
-
-    .info h4 {
-      margin: 0 0 5px;
-      color: #777;
-    }
-
-    .legend {
-      text-align: left;
-      line-height: 18px;
-      color: #555;
-    }
-
-    .legend i {
-      width: 18px;
-      height: 18px;
-      float: left;
-      margin-right: 8px;
-      opacity: 0.7;
-    }
-  </style>
+ 
 </head>
-</head>
-
 <body>
 
   <!-- Insert HTML division tag to layout the map -->
   <div id="map"></div>
   <!-- Insert Javascript (.js) code to create the map -->
   <script type="text/javascript" src="data2008.js"></script>
-  <script type="text/javascript">
-    var map = L.map('map', {
-      center: [13.8333, -88.9167], // EDIT latitude, longitude to re-center map
-      zoom: 9,  // EDIT from 1 to 18 -- decrease to zoom out, increase to zoom in
-      scrollWheelZoom: true,
-      tap: true
-    });
-
-    /* Control panel to display map layers */
-    var controlLayers = L.control.layers(null, null, {
-      position: "topright",
-      collapsed: false
-    }).addTo(map);
-
-    // display Carto basemap tiles with light features and labels
-    var light = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
-    }).addTo(map); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default}
-
-    
-    controlLayers.addBaseLayer(light, 'Carto Light basemap');
-
-    controlLayers.addBaseLayer(light, 'Carto  basemap');
-
-    var geojson = L.geoJson(data2008).addTo(map);
-
-    var info = L.control();
-
-    info.onAdd = function (map) {
-      this._div = L.DomUtil.create('div', 'info');
-      this.update();
-      return this._div;
-    };
-
-    info.update = function (props) {
-      this._div.innerHTML = '<h4> Homicidio por Estrangulamiento</h4>' + (props ?
-        '<b>' + props.nom_mun + '</b><br />' + props.Homicidi_3 + ' personas'
-        : 'Hover over a state');
-    };
-
-    info.addTo(map);
-
-    function getColor(d) {
-      return d < 1 ? '#800026' :
-        d < 2 ? '#BD0026' :
-          d < 3 ? '#E31A1C' :
-            d < 4 ? '#FC4E2A' :
-              d < 7 ? '#FD8D3C' :
-                d < 10 ? '#FEB24C' :
-                  d == "null" ? '#FED976' :
-                    '#FFEDA0';
-    }
-
-
-    function style(feature) {
-      return {
-        fillColor: getColor(feature.properties.Homicidi_1),
-        weight: 2,
-        opacity: 1,
-        color: 'white',
-        dashArray: '3',
-        fillOpacity: 0.7
-      };
-    }
-
-
-    function highlightFeature(e) {
-      var layer = e.target;
-
-      layer.setStyle({
-        weight: 5,
-        color: '#666',
-        dashArray: '',
-        fillOpacity: 0.7
-      });
-
-      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
-      }
-
-      info.update(layer.feature.properties);
-    }
-
-
-    var geojson;
-
-    function resetHighlight(e) {
-      geojson.resetStyle(e.target);
-      info.update();
-    }
-
-
-    function zoomToFeature(e) {
-      map.fitBounds(e.target.getBounds());
-    }
-
-
-    function onEachFeature(feature, layer) {
-      layer.on({
-        mouseover: highlightFeature,
-        mouseout: resetHighlight,
-        click: zoomToFeature
-      });
-    }
-
-    geojson = L.geoJson(data2008, {
-      style: style,
-      onEachFeature: onEachFeature
-    }).addTo(map);
-
-    map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
-
-    var legend = L.control({ position: 'bottomright' });
-
-    legend.onAdd = function (map) {
-
-      var div = L.DomUtil.create('div', 'info legend'),
-        grades = [1, 2, 3, 4, 7, 10, 500, 1000],
-        labels = [],
-        from, to;
-
-      for (var i = 0; i < grades.length; i++) {
-        from = grades[i];
-        to = grades[i + 1];
-
-        labels.push(
-          '<i style="background:' + getColor(from + 1) + '"></i> ' +
-          from + (to ? '&ndash;' + to : '+'));
-      }
-
-      div.innerHTML = labels.join('<br>');
-      return div;
-    };
-
-    legend.addTo(map);
+  <script type="text/javascript" src="javascript/cloropleth2008.js">
 
   </script>
 </body>
