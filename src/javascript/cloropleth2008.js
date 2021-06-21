@@ -18,7 +18,7 @@ var map = L.map('map', {
 
   
  
-  var geojson = L.geoJson(data2008).addTo(map);
+  var geojson = L.geoJson(data).addTo(map);
 
   var info = L.control();
 
@@ -28,9 +28,10 @@ var map = L.map('map', {
     return this._div;
   };
 
+
   info.update = function (props) {
-    this._div.innerHTML = '<h4> Homicidio por Estrangulamiento</h4>' + (props ?
-      '<b>' + props.nom_mun + '</b><br />' + (props.Homicidi_1 ? props.Homicidi_1 : 0 ) + ' personas'
+    this._div.innerHTML = '<h4> Homicidio por Arma de fuego</h4>' + (props ?
+      '<b>' + props.NOM_MUN + '</b><br />' + (props["2008_AF_2008"] ? props["2008_AF_2008"] : 0 ) + ' personas'
       : 'Hover over a state');
   };
 
@@ -49,7 +50,7 @@ var map = L.map('map', {
 
   function style(feature) {
     return {
-      fillColor: getColor(feature.properties.Homicidi_1),
+      fillColor: getColor(feature.properties["2008_AF_2008"]),
       weight: 2,
       opacity: 1,
       color: 'white',
@@ -107,13 +108,13 @@ var map = L.map('map', {
     });
   }
 
-  geojson = L.geoJson(data2008, {
+  geojson = L.geoJson(data, {
     style: style,
     onEachFeature: onEachFeature
   }).addTo(map);
 
   
-  geojson2 = L.geoJson(data2008, {
+  geojson2 = L.geoJson(data, {
     style: style2,
     onEachFeature: onEachFeature
   }).addTo(map);
