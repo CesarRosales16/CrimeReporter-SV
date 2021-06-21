@@ -29,24 +29,22 @@ var map = L.map('map', {
   };
 
   info.update = function (props) {
-      
     this._div.innerHTML = '<h4> Homicidio por Estrangulamiento</h4>' + (props ?
-      '<b>' + props.nom_mun + '</b><br />' + (props.Homicidi_3) + ' personas'
+      '<b>' + props.nom_mun + '</b><br />' + (props.Homicidi_1 ? props.Homicidi_1 : 0 ) + ' personas'
       : 'Hover over a state');
   };
 
   info.addTo(map);
 
   function getColor(d) {
-    return 
-      d < 1 ? '#800026' :
+    return d < 1 ? '#800026' :
       d < 2 ? '#BD0026' :
       d < 3 ? '#E31A1C' :
       d < 4 ? '#FC4E2A' :
       d < 7 ? '#FD8D3C' :
       d < 10 ? '#FEB24C' :
       d == "null" ? '#FED976' :
-                  '#FFEDA0';
+      '#FFEDA0';
   }
 
   function style(feature) {
@@ -97,11 +95,9 @@ var map = L.map('map', {
     info.update();
   }
 
-
   function zoomToFeature(e) {
     map.fitBounds(e.target.getBounds());
   }
-
 
   function onEachFeature(feature, layer) {
     layer.on({
@@ -150,3 +146,5 @@ var map = L.map('map', {
   };
 
   legend.addTo(map);
+
+  // b arma fuego   3500   f  1381  estrang   o  cortocondundente 3588   v contundente 1966 
