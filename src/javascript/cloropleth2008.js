@@ -140,29 +140,25 @@ map.attributionControl.addAttribution(
 
 info.addTo(map);
 
-var legend = L.control({ position: "bottomright" });
+var legend = L.control({ position: 'bottomright' });
 
 legend.onAdd = function (map) {
-  var div = L.DomUtil.create("div", "info legend"),
+
+  var div = L.DomUtil.create('div', 'info legend'),
     grades = [1, 2, 3, 4, 7, 10, 500, 1000],
     labels = [],
-    from,
-    to;
+    from, to;
 
   for (var i = 0; i < grades.length; i++) {
     from = grades[i];
     to = grades[i + 1];
 
     labels.push(
-      '<i style="background:' +
-        getColor(from + 1) +
-        '"></i> ' +
-        from +
-        (to ? "&ndash;" + to : "+")
-    );
+      '<i style="background:' + getColor(from + 1) + '"></i> ' +
+      from + (to ? '&ndash;' + to : '+'));
   }
 
-  div.innerHTML = labels.join("<br>");
+  div.innerHTML = labels.join('<br>');
   return div;
 };
 
