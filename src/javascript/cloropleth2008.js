@@ -21,7 +21,7 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
 
 var info = L.control();
 
-var currentLayer = "Homicidio OC";
+var currentLayer = "Homicidio 2008";
 
 const validValue = (value) => (value ? parseInt(value) : 0);
 
@@ -33,10 +33,16 @@ info.onAdd = function (map) {
 
 const getCurrentLayer = (props) => {
   switch (currentLayer) {
-    case "Homicidio OC":
+    case "Homicidio 2008":
       return validValue(props['2008_OC_2008']) + validValue(props['2008_AF_2008']) + validValue(props['2008_AE_2008']) + validValue(props['2008_CC_2008']);
+    case "Homicidio OC":
+      return validValue(props['2008_OC_2008']);
     case "Homicidio AF":
       return validValue(props['2008_AF_2008']);
+    case "Homicidio CC":
+      return validValue(props['2008_CC_2008']);
+      case "Homicidio AE":
+      return validValue(props['2008_AE_2008']);
     default:
       return validValue(props['2008_CC_2008']);
   }
@@ -47,7 +53,7 @@ info.update = function (props) {
   this._div.innerHTML =
     `<h4>${currentLayer}</h4>` +
     (props
-      ? "<b>" + props.nom_mun + "</b><br />" + selectedLayer + " persona(s)"
+      ? "<b>" + props.NOM_MUN + "</b><br />" + selectedLayer + " persona(s)"
       : "Hover over a state");
 };
 
@@ -124,7 +130,15 @@ map.on("baselayerchange", function ({ layer, name }) {
   layer.setStyle(style);
 });
 
+geojson1 = L.geoJson(data, {
+  style: style,
+  onEachFeature: onEachFeature,
+});
 geojson2 = L.geoJson(data, {
+  style: style,
+  onEachFeature: onEachFeature,
+});
+geojson3 = L.geoJson(data, {
   style: style,
   onEachFeature: onEachFeature,
 });
@@ -134,8 +148,10 @@ geojson4 = L.geoJson(data, {
   onEachFeature: onEachFeature,
 });
 
+
+var capas = { "Homicidio 2008": geojson, "Homicidio OC": geojson1, "Homicidio AF": geojson2, "Homicidio CC": geojson3, "Homicidio AE": geojson4 };
 L.control
-  .layers({ "Homicidio OC": geojson, "Homicidio AF": geojson2, "Homicidio CC": geojson4 }, null, {
+  .layers(capas, null, {
     position: "topright",
     collapsed: false,
   })
