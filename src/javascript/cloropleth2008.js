@@ -23,7 +23,7 @@ var info = L.control();
 
 var currentLayer = "Homicidio OC";
 
-const validValue = (value) => (value ? value : 0);
+const validValue = (value) => (value ? parseInt(value) : 0);
 
 info.onAdd = function (map) {
   this._div = L.DomUtil.create("div", "info");
@@ -34,8 +34,8 @@ info.onAdd = function (map) {
 const getCurrentLayer = (props) => {
   switch (currentLayer) {
     case "Homicidio OC":
-      return validValue(props['2008_OC_2008'])+validValue(props['2008_AF_2008'])+validValue(props['2008_AE_2008'])+validValue(props['2008_CC_2008']);
-      case "Homicidio AF":
+      return validValue(props['2008_OC_2008']) + validValue(props['2008_AF_2008']) + validValue(props['2008_AE_2008']) + validValue(props['2008_CC_2008']);
+    case "Homicidio AF":
       return validValue(props['2008_AF_2008']);
     default:
       return validValue(props['2008_CC_2008']);
@@ -55,16 +55,16 @@ function getColor(d) {
   return d < 1
     ? "#800026"
     : d < 2
-    ? "#BD0026"
-    : d < 3
-    ? "#E31A1C"
-    : d < 4
-    ? "#FC4E2A"
-    : d < 7
-    ? "#FD8D3C"
-    : d < 10
-    ? "#FEB24C"
-    : "#FFEDA0";
+      ? "#BD0026"
+      : d < 3
+        ? "#E31A1C"
+        : d < 4
+          ? "#FC4E2A"
+          : d < 7
+            ? "#FD8D3C"
+            : d < 10
+              ? "#FEB24C"
+              : "#FFEDA0";
 }
 
 function style({ properties }) {
@@ -162,10 +162,10 @@ legend.onAdd = function (map) {
 
     labels.push(
       '<i style="background:' +
-        getColor(from + 1) +
-        '"></i> ' +
-        from +
-        (to ? "&ndash;" + to : "+")
+      getColor(from + 1) +
+      '"></i> ' +
+      from +
+      (to ? "&ndash;" + to : "+")
     );
   }
 
