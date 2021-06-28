@@ -21,7 +21,15 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
 
 var info = L.control();
 
-var currentLayer = "Homicidio 2008";
+var currentLayer = "";
+
+window.onload = function () {
+  currentLayer = document
+    .querySelector(
+      `input[class="leaflet-control-layers-selector"]:checked + span`
+    )
+    .innerHTML.trim();
+};
 
 const validValue = (value) => (value ? parseInt(value) : 0);
 
@@ -34,17 +42,22 @@ info.onAdd = function (map) {
 const getCurrentLayer = (props) => {
   switch (currentLayer) {
     case "Homicidio 2008":
-      return validValue(props['2008_OC_2008']) + validValue(props['2008_AF_2008']) + validValue(props['2008_AE_2008']) + validValue(props['2008_CC_2008']);
+      return (
+        validValue(props["2008_OC_2008"]) +
+        validValue(props["2008_AF_2008"]) +
+        validValue(props["2008_AE_2008"]) +
+        validValue(props["2008_CC_2008"])
+      );
     case "Homicidio OC":
-      return validValue(props['2008_OC_2008']);
+      return validValue(props["2008_OC_2008"]);
     case "Homicidio AF":
-      return validValue(props['2008_AF_2008']);
+      return validValue(props["2008_AF_2008"]);
     case "Homicidio CC":
-      return validValue(props['2008_CC_2008']);
-      case "Homicidio AE":
-      return validValue(props['2008_AE_2008']);
+      return validValue(props["2008_CC_2008"]);
+    case "Homicidio AE":
+      return validValue(props["2008_AE_2008"]);
     default:
-      return validValue(props['2008_CC_2008']);
+      return validValue(props["2008_CC_2008"]);
   }
 };
 
@@ -61,16 +74,16 @@ function getColor(d) {
   return d < 1
     ? "#800026"
     : d < 2
-      ? "#BD0026"
-      : d < 3
-        ? "#E31A1C"
-        : d < 4
-          ? "#FC4E2A"
-          : d < 7
-            ? "#FD8D3C"
-            : d < 10
-              ? "#FEB24C"
-              : "#FFEDA0";
+    ? "#BD0026"
+    : d < 3
+    ? "#E31A1C"
+    : d < 4
+    ? "#FC4E2A"
+    : d < 7
+    ? "#FD8D3C"
+    : d < 10
+    ? "#FEB24C"
+    : "#FFEDA0";
 }
 
 function style({ properties }) {
@@ -100,11 +113,11 @@ function highlightFeature({ target }) {
   info.update(layer.feature.properties);
 }
 
-var geojson, geojson2;
+var geojsonBase, geojsonAuxiliar;
 
 function resetHighlight({ target }) {
-  geojson.resetStyle(target);
-  geojson2.resetStyle(target);
+  geojsonBase.resetStyle(target);
+  geojsonAuxiliar.resetStyle(target);
   info.update();
 }
 
@@ -120,36 +133,37 @@ function onEachFeature(feature, layer) {
   });
 }
 
-geojson = L.geoJson(data, {
+geojsonBase = L.geoJson(data, {
   style: style,
   onEachFeature: onEachFeature,
 }).addTo(map);
 
-map.on("baselayerchange", function ({ layer, name }) {
-  currentLayer = name;
+map.on("baselayerchange", function ({ layer }) {
+  // Obtener el texto del span, que está inmediatamente abajo del radio button seleccionado
+  /*
+    <input type="radio" class="leaflet-control-layers-selector" checked="checked">
+    <span>layer_name</span>
+  */
+  currentLayer = document
+    .querySelector(
+      `input[class="leaflet-control-layers-selector"]:checked + span`
+    )
+    .innerHTML.trim(); // .trim() para eliminar los espacios al principio y final del texto obtenido
   layer.setStyle(style);
 });
 
-geojson1 = L.geoJson(data, {
-  style: style,
-  onEachFeature: onEachFeature,
-});
-geojson2 = L.geoJson(data, {
-  style: style,
-  onEachFeature: onEachFeature,
-});
-geojson3 = L.geoJson(data, {
+geojsonAuxiliar = L.geoJson(data, {
   style: style,
   onEachFeature: onEachFeature,
 });
 
-geojson4 = L.geoJson(data, {
-  style: style,
-  onEachFeature: onEachFeature,
-});
-
-
-var capas = { "Homicidio 2008": geojson, "Homicidio OC": geojson1, "Homicidio AF": geojson2, "Homicidio CC": geojson3, "Homicidio AE": geojson4 };
+var capas = {
+  "Homicidio 2008": geojsonBase,
+  "Homicidio OC": geojsonAuxiliar,
+  "Homicidio AF": geojsonAuxiliar,
+  "Homicidio CC": geojsonAuxiliar,
+  "Homicidio AE": geojsonAuxiliar,
+};
 L.control
   .layers(capas, null, {
     position: "topright",
@@ -178,10 +192,10 @@ legend.onAdd = function (map) {
 
     labels.push(
       '<i style="background:' +
-      getColor(from + 1) +
-      '"></i> ' +
-      from +
-      (to ? "&ndash;" + to : "+")
+        getColor(from + 1) +
+        '"></i> ' +
+        from +
+        (to ? "&ndash;" + to : "+")
     );
   }
 
