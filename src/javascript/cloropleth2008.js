@@ -21,9 +21,9 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
 
 var info = L.control();
 
-var currentLayer = "Homicidio 1";
+var currentLayer = "Homicidio 2008";
 
-const validValue = (value) => (value ? value : 0);
+const validValue = (value) => (value ? parseInt(value) : 0);
 
 info.onAdd = function (map) {
   this._div = L.DomUtil.create("div", "info");
@@ -33,10 +33,18 @@ info.onAdd = function (map) {
 
 const getCurrentLayer = (props) => {
   switch (currentLayer) {
-    case "Homicidio 1":
-      return validValue(props.Homicidi_1);
+    case "Homicidio 2008":
+      return validValue(props['2008_OC_2008']) + validValue(props['2008_AF_2008']) + validValue(props['2008_AE_2008']) + validValue(props['2008_CC_2008']);
+    case "Homicidio OC":
+      return validValue(props['2008_OC_2008']);
+    case "Homicidio AF":
+      return validValue(props['2008_AF_2008']);
+    case "Homicidio CC":
+      return validValue(props['2008_CC_2008']);
+      case "Homicidio AE":
+      return validValue(props['2008_AE_2008']);
     default:
-      return validValue(props.Homicidi_2);
+      return validValue(props['2008_CC_2008']);
   }
 };
 
@@ -45,7 +53,7 @@ info.update = function (props) {
   this._div.innerHTML =
     `<h4>${currentLayer}</h4>` +
     (props
-      ? "<b>" + props.nom_mun + "</b><br />" + selectedLayer + " persona(s)"
+      ? "<b>" + props.NOM_MUN + "</b><br />" + selectedLayer + " persona(s)"
       : "Hover over a state");
 };
 
@@ -53,16 +61,16 @@ function getColor(d) {
   return d < 1
     ? "#800026"
     : d < 2
-    ? "#BD0026"
-    : d < 3
-    ? "#E31A1C"
-    : d < 4
-    ? "#FC4E2A"
-    : d < 7
-    ? "#FD8D3C"
-    : d < 10
-    ? "#FEB24C"
-    : "#FFEDA0";
+      ? "#BD0026"
+      : d < 3
+        ? "#E31A1C"
+        : d < 4
+          ? "#FC4E2A"
+          : d < 7
+            ? "#FD8D3C"
+            : d < 10
+              ? "#FEB24C"
+              : "#FFEDA0";
 }
 
 function style({ properties }) {
@@ -112,7 +120,7 @@ function onEachFeature(feature, layer) {
   });
 }
 
-geojson = L.geoJson(data2008, {
+geojson = L.geoJson(data, {
   style: style,
   onEachFeature: onEachFeature,
 }).addTo(map);
@@ -122,13 +130,28 @@ map.on("baselayerchange", function ({ layer, name }) {
   layer.setStyle(style);
 });
 
-geojson2 = L.geoJson(data2008, {
+geojson1 = L.geoJson(data, {
+  style: style,
+  onEachFeature: onEachFeature,
+});
+geojson2 = L.geoJson(data, {
+  style: style,
+  onEachFeature: onEachFeature,
+});
+geojson3 = L.geoJson(data, {
   style: style,
   onEachFeature: onEachFeature,
 });
 
+geojson4 = L.geoJson(data, {
+  style: style,
+  onEachFeature: onEachFeature,
+});
+
+
+var capas = { "Homicidio 2008": geojson, "Homicidio OC": geojson1, "Homicidio AF": geojson2, "Homicidio CC": geojson3, "Homicidio AE": geojson4 };
 L.control
-  .layers({ "Homicidio 1": geojson, "Homicidio 2": geojson2 }, null, {
+  .layers(capas, null, {
     position: "topright",
     collapsed: false,
   })
@@ -155,10 +178,10 @@ legend.onAdd = function (map) {
 
     labels.push(
       '<i style="background:' +
-        getColor(from + 1) +
-        '"></i> ' +
-        from +
-        (to ? "&ndash;" + to : "+")
+      getColor(from + 1) +
+      '"></i> ' +
+      from +
+      (to ? "&ndash;" + to : "+")
     );
   }
 
