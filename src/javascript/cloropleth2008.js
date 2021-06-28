@@ -72,18 +72,20 @@ info.update = function (props) {
 
 function getColor(d) {
   return d < 1
-    ? "#800026"
+    ? "#eddd95"
     : d < 2
-    ? "#BD0026"
-    : d < 3
-    ? "#E31A1C"
-    : d < 4
-    ? "#FC4E2A"
-    : d < 7
-    ? "#FD8D3C"
-    : d < 10
-    ? "#FEB24C"
-    : "#FFEDA0";
+      ? "#FEB24C"
+      : d < 3
+        ? "#FD8D3C"
+        : d < 4
+          ? "#FC4E2A"
+          : d < 7
+            ? "#BD0026"
+            : d < 15
+              ? "#800026"
+              : d < 200
+                ? "#660320"
+                : "#360111";
 }
 
 function style({ properties }) {
