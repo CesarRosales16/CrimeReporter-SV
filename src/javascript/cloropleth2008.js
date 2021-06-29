@@ -48,14 +48,30 @@ const getCurrentLayer = (props) => {
         validValue(props["2008_AE_2008"]) +
         validValue(props["2008_CC_2008"])
       );
-    case "Homicidio OC":
+    case "Homicidio 2009":
+      return (
+        validValue(props["2009_OC_2009"]) +
+        validValue(props["2009_AF_2009"]) +
+        validValue(props["2009_AE_2009"]) +
+        validValue(props["2009_CC_2009"])
+      );
+    case "Homicidio OC 2008":
       return validValue(props["2008_OC_2008"]);
-    case "Homicidio AF":
+    case "Homicidio AF 2008":
       return validValue(props["2008_AF_2008"]);
-    case "Homicidio CC":
+    case "Homicidio CC 2008":
       return validValue(props["2008_CC_2008"]);
-    case "Homicidio AE":
+    case "Homicidio AE 2008":
       return validValue(props["2008_AE_2008"]);
+
+    case "Homicidio OC 2009":
+      return validValue(props["2009_OC_2009"]);
+    case "Homicidio AF 2009":
+      return validValue(props["2009_AF_2009"]);
+    case "Homicidio CC 2009":
+      return validValue(props["2009_CC_2009"]);
+    case "Homicidio AE 2009":
+      return validValue(props["2009_AE_2009"]);
     default:
       return validValue(props["2008_CC_2008"]);
   }
@@ -161,10 +177,16 @@ geojsonAuxiliar = L.geoJson(data, {
 
 var capas = {
   "Homicidio 2008": geojsonBase,
-  "Homicidio OC": geojsonAuxiliar,
-  "Homicidio AF": geojsonAuxiliar,
-  "Homicidio CC": geojsonAuxiliar,
-  "Homicidio AE": geojsonAuxiliar,
+  "Homicidio OC 2008": geojsonAuxiliar,
+  "Homicidio AF 2008": geojsonAuxiliar,
+  "Homicidio CC 2008": geojsonAuxiliar,
+  "Homicidio AE 2008": geojsonAuxiliar,
+  "Homicidio 2009": geojsonAuxiliar,
+  "Homicidio OC 2009": geojsonAuxiliar,
+  "Homicidio AF 2009": geojsonAuxiliar,
+  "Homicidio CC 2009": geojsonAuxiliar,
+  "Homicidio AE 2009": geojsonAuxiliar,
+
 };
 L.control
   .layers(capas, null, {
@@ -194,10 +216,10 @@ legend.onAdd = function (map) {
 
     labels.push(
       '<i style="background:' +
-        getColor(from + 1) +
-        '"></i> ' +
-        from +
-        (to ? "&ndash;" + to : "+")
+      getColor(from + 1) +
+      '"></i> ' +
+      from +
+      (to ? "&ndash;" + to : "+")
     );
   }
 
