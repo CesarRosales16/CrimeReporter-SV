@@ -14,8 +14,8 @@
      */
     L.Control.Layers.Tree = L.Control.Layers.extend({
         options: {
-            closedSymbol: '+',
-            openedSymbol: '&minus;',
+            closedSymbol: '<i class="fas fa-angle-down"></i>',
+            openedSymbol: '<i class="fas fa-angle-up"></i>',
             spaceSymbol: ' ',
             selectorBack: false,
             namedToggle: false,

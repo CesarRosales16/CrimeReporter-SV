@@ -6,6 +6,8 @@
 }
 
 .leaflet-layerstree-node {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .leaflet-layerstree-header input {
@@ -57,4 +59,12 @@
 
 .leaflet-layerstree-expand-collapse {
   cursor: pointer;
+}
+
+.fas {
+  font-size: 1.2rem;
+}
+
+.leaflet-control-layers.leaflet-control.leaflet-control-layers-expanded{
+  font-size: 1rem;
 }

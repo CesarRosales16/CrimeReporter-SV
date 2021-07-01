@@ -5,14 +5,6 @@ var map = L.map("map", {
   tap: true,
 });
 
-/* Control panel to display map layers */
-var controlLayers = L.control
-  .layers(null, null, {
-    position: "topright",
-    collapsed: false,
-  })
-  .addTo(map);
-
 // display Carto basemap tiles with light features and labels
 L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
   attribution:
@@ -32,54 +24,19 @@ info.onAdd = function (map) {
 };
 
 const getCurrentLayer = (props) => {
-  switch (currentLayer) {
-    case "Homicidio 2008":
+  const labels = currentLayer.split(" ");
+  switch (labels.length) {
+    case 2:
       return (
-        validValue(props["2008_OC_2008"]) +
-        validValue(props["2008_AF_2008"]) +
-        validValue(props["2008_AE_2008"]) +
-        validValue(props["2008_CC_2008"])
+        validValue(props[`${labels[1]}_OC_${labels[1]}`]) +
+        validValue(props[`${labels[1]}_AF_${labels[1]}`]) +
+        validValue(props[`${labels[1]}_AE_${labels[1]}`]) +
+        validValue(props[`${labels[1]}_CC_${labels[1]}`])
       );
-    case "Homicidio OC 2008":
-      return validValue(props["2008_OC_2008"]);
-    case "Homicidio AF 2008":
-      return validValue(props["2008_AF_2008"]);
-    case "Homicidio CC 2008":
-      return validValue(props["2008_CC_2008"]);
-    case "Homicidio AE 2008":
-      return validValue(props["2008_AE_2008"]);
-    case "Homicidio 2009":
-      return (
-        validValue(props["2009_OC_2009"]) +
-        validValue(props["2009_AF_2009"]) +
-        validValue(props["2009_AE_2009"]) +
-        validValue(props["2009_CC_2009"])
-      );
-    case "Homicidio OC 2009":
-      return validValue(props["2009_OC_2009"]);
-    case "Homicidio AF 2009":
-      return validValue(props["2009_AF_2009"]);
-    case "Homicidio CC 2009":
-      return validValue(props["2009_CC_2009"]);
-    case "Homicidio AE 2009":
-      return validValue(props["2009_AE_2009"]);
-    case "Homicidio 2010":
-      return (
-        validValue(props["2010_OC_2010"]) +
-        validValue(props["2010_AF_2010"]) +
-        validValue(props["2010_AE_2010"]) +
-        validValue(props["2010_CC_2010"])
-      );
-    case "Homicidio OC 2010":
-      return validValue(props["2010_OC_2010"]);
-    case "Homicidio AF 2010":
-      return validValue(props["2010_AF_2010"]);
-    case "Homicidio CC 2010":
-      return validValue(props["2010_CC_2010"]);
-    case "Homicidio AE 2010":
-      return validValue(props["2010_AE_2010"]);
+    case 3:
+      return validValue(props[`${labels[2]}_${labels[1]}_${labels[2]}`]);
     default:
-      return validValue(props["2009_CC_2009"]);
+      return;
   }
 };
 
@@ -168,6 +125,7 @@ map.on("baselayerchange", function ({ layer }) {
       `input[class="leaflet-control-layers-selector"]:checked + span`
     )
     .innerHTML.trim();
+  console.log(currentLayer.split(" "));
   layer.setStyle(style);
 });
 
@@ -218,6 +176,94 @@ var baseTree = [
       { label: "Homicidio AE 2010", layer: geojsonAuxiliar },
     ],
   },
+  {
+    label: "2011",
+    collapsed: true,
+    children: [
+      { label: "Homicidio 2011", layer: geojsonAuxiliar },
+      { label: "Homicidio OC 2011", layer: geojsonAuxiliar },
+      { label: "Homicidio AF 2011", layer: geojsonAuxiliar },
+      { label: "Homicidio CC 2011", layer: geojsonAuxiliar },
+      { label: "Homicidio AE 2011", layer: geojsonAuxiliar },
+    ],
+  },
+  {
+    label: "2012",
+    collapsed: true,
+    children: [
+      { label: "Homicidio 2012", layer: geojsonAuxiliar },
+      { label: "Homicidio OC 2012", layer: geojsonAuxiliar },
+      { label: "Homicidio AF 2012", layer: geojsonAuxiliar },
+      { label: "Homicidio CC 2012", layer: geojsonAuxiliar },
+      { label: "Homicidio AE 2012", layer: geojsonAuxiliar },
+    ],
+  },
+  {
+    label: "2013",
+    collapsed: true,
+    children: [
+      { label: "Homicidio 2013", layer: geojsonAuxiliar },
+      { label: "Homicidio OC 2013", layer: geojsonAuxiliar },
+      { label: "Homicidio AF 2013", layer: geojsonAuxiliar },
+      { label: "Homicidio CC 2013", layer: geojsonAuxiliar },
+      { label: "Homicidio AE 2013", layer: geojsonAuxiliar },
+    ],
+  },
+  {
+    label: "2014",
+    collapsed: true,
+    children: [
+      { label: "Homicidio 2014", layer: geojsonAuxiliar },
+      { label: "Homicidio OC 2014", layer: geojsonAuxiliar },
+      { label: "Homicidio AF 2014", layer: geojsonAuxiliar },
+      { label: "Homicidio CC 2014", layer: geojsonAuxiliar },
+      { label: "Homicidio AE 2014", layer: geojsonAuxiliar },
+    ],
+  },
+  {
+    label: "2015",
+    collapsed: true,
+    children: [
+      { label: "Homicidio 2015", layer: geojsonAuxiliar },
+      { label: "Homicidio OC 2015", layer: geojsonAuxiliar },
+      { label: "Homicidio AF 2015", layer: geojsonAuxiliar },
+      { label: "Homicidio CC 2015", layer: geojsonAuxiliar },
+      { label: "Homicidio AE 2015", layer: geojsonAuxiliar },
+    ],
+  },
+  {
+    label: "2016",
+    collapsed: true,
+    children: [
+      { label: "Homicidio 2016", layer: geojsonAuxiliar },
+      { label: "Homicidio OC 2016", layer: geojsonAuxiliar },
+      { label: "Homicidio AF 2016", layer: geojsonAuxiliar },
+      { label: "Homicidio CC 2016", layer: geojsonAuxiliar },
+      { label: "Homicidio AE 2016", layer: geojsonAuxiliar },
+    ],
+  },
+  {
+    label: "2017",
+    collapsed: true,
+    children: [
+      { label: "Homicidio 2017", layer: geojsonAuxiliar },
+      { label: "Homicidio OC 2017", layer: geojsonAuxiliar },
+      { label: "Homicidio AF 2017", layer: geojsonAuxiliar },
+      { label: "Homicidio CC 2017", layer: geojsonAuxiliar },
+      { label: "Homicidio AE 2017", layer: geojsonAuxiliar },
+    ],
+  },
+  {
+    label: "2018",
+    collapsed: true,
+    children: [
+      { label: "Homicidio 2018", layer: geojsonAuxiliar },
+      { label: "Homicidio OC 2018", layer: geojsonAuxiliar },
+      { label: "Homicidio AF 2018", layer: geojsonAuxiliar },
+      { label: "Homicidio CC 2018", layer: geojsonAuxiliar },
+      { label: "Homicidio AE 2018", layer: geojsonAuxiliar },
+    ],
+  },
 ];
 
 L.control.layers.tree(baseTree).addTo(map);
@@ -252,4 +298,12 @@ legend.onAdd = function (map) {
 
 legend.addTo(map);
 
-// b arma fuego   3500   f  1381  estrang   o  cortocondundente 3588   v contundente 1966
+var toggle = document.querySelector(".leaflet-control-layers.leaflet-control");
+static();
+
+toggle.addEventListener("mouseover", static, false);
+toggle.addEventListener("mouseout", static, false);
+
+function static() {
+  toggle.classList.add("leaflet-control-layers-expanded");
+}
