@@ -11,6 +11,16 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>',
 }).addTo(map); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default}
 
+var title = L.control({ position: "topright" });
+        title.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'info');
+            div.innerHTML +=
+                '<h2>   <img src="./img/CrimeReporterLOGO.png" alt="CrimeReporterLOGO" width="330" height="60">   </h2 Registro de delitos en El Salvador' ;
+            return div;
+        };
+        title.addTo(map);
+
+
 var info = L.control();
 
 var currentLayer = "Homicidio 2008";
@@ -46,7 +56,7 @@ info.update = function (props) {
     `<h4>${currentLayer}</h4>` +
     (props
       ? "<b>" + props.NOM_MUN + "</b><br />" + selectedLayer + " persona(s)"
-      : "Hover over a state");
+      : "Colocar cursor sobre municipio ");
 };
 
 function getColor(d) {
@@ -83,7 +93,7 @@ function highlightFeature({ target }) {
 
   layer.setStyle({
     weight: 5,
-    color: "#666",
+    color: "#450a0a",
     dashArray: "",
     fillOpacity: 0.7,
   });
@@ -266,33 +276,37 @@ var baseTree = [
   },
 ];
 
+
+
 L.control.layers.tree(baseTree).addTo(map);
 
 info.addTo(map);
 
-var legend = L.control({ position: "bottomright" });
+var legend = L.control({ position: "topleft" });
 
 legend.onAdd = function (map) {
   var div = L.DomUtil.create("div", "info legend"),
-    grades = [1, 2, 3, 4, 7, 10, 500, 1000],
-    labels = [],
+    grades = [0, 1, 2, 3, 4, 7, 10, 200, 1000],
+    labels = [' <h3> <strong> Categorías </strong>   </h3> <br>'],
     from,
     to;
 
-  for (var i = 0; i < grades.length; i++) {
+  for (var i = 0; i < grades.length-1; i++) {
     from = grades[i];
     to = grades[i + 1];
-
+    console.log(from, to);
     labels.push(
       '<i style="background:' +
-        getColor(from + 1) +
-        '"></i> ' +
+        getColor(from) +
+        '" ></i> ' + '<p> '+ 
         from +
-        (to ? "&ndash;" + to : "+")
+        (to ? " &ndash; " + to : "+") +  '</p> ' + ' <br> '
     );
   }
+  console.log(labels)
+  div.innerHTML = labels.join('');
+  console.log(div.innerHTML)
 
-  div.innerHTML = labels.join("<br>");
   return div;
 };
 
@@ -307,3 +321,6 @@ toggle.addEventListener("mouseout", static, false);
 function static() {
   toggle.classList.add("leaflet-control-layers-expanded");
 }
+
+
+
