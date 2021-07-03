@@ -8,7 +8,7 @@ var map = L.map("map", {
 // display Carto basemap tiles with light features and labels
 L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
   attribution:
-    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>',
+    ' | Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>',
 }).addTo(map); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default}
 
 var title = L.control({ position: "topright" });
