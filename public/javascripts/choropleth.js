@@ -144,137 +144,21 @@ geojsonAuxiliar = L.geoJson(data, {
   onEachFeature: onEachFeature,
 });
 
-var capas = {
-  "Homicidio 2008": geojsonBase,
-  "Homicidio OC": geojsonAuxiliar,
-  "Homicidio AF": geojsonAuxiliar,
-  "Homicidio CC": geojsonAuxiliar,
-  "Homicidio AE": geojsonAuxiliar,
-};
+var baseTree = [];
 
-var baseTree = [
-  {
-    label: "2008",
+for (let year = 2008; year <= 2018; year++) {
+  baseTree.push({
+    label: `${year}`,
     collapsed: true,
     children: [
-      { label: "Homicidio 2008", layer: geojsonBase },
-      { label: "Homicidio OC 2008", layer: geojsonAuxiliar },
-      { label: "Homicidio AF 2008", layer: geojsonAuxiliar },
-      { label: "Homicidio CC 2008", layer: geojsonAuxiliar },
-      { label: "Homicidio AE 2008", layer: geojsonAuxiliar },
+      { label: `Homicidio ${year}`, layer: geojsonBase },
+      { label: `Homicidio OC ${year}`, layer: geojsonAuxiliar },
+      { label: `Homicidio AF ${year}`, layer: geojsonAuxiliar },
+      { label: `Homicidio CC ${year}`, layer: geojsonAuxiliar },
+      { label: `Homicidio AE ${year}`, layer: geojsonAuxiliar },
     ],
-  },
-  {
-    label: "2009",
-    collapsed: true,
-    children: [
-      { label: "Homicidio 2009", layer: geojsonAuxiliar },
-      { label: "Homicidio OC 2009", layer: geojsonAuxiliar },
-      { label: "Homicidio AF 2009", layer: geojsonAuxiliar },
-      { label: "Homicidio CC 2009", layer: geojsonAuxiliar },
-      { label: "Homicidio AE 2009", layer: geojsonAuxiliar },
-    ],
-  },
-  {
-    label: "2010",
-    collapsed: true,
-    children: [
-      { label: "Homicidio 2010", layer: geojsonAuxiliar },
-      { label: "Homicidio OC 2010", layer: geojsonAuxiliar },
-      { label: "Homicidio AF 2010", layer: geojsonAuxiliar },
-      { label: "Homicidio CC 2010", layer: geojsonAuxiliar },
-      { label: "Homicidio AE 2010", layer: geojsonAuxiliar },
-    ],
-  },
-  {
-    label: "2011",
-    collapsed: true,
-    children: [
-      { label: "Homicidio 2011", layer: geojsonAuxiliar },
-      { label: "Homicidio OC 2011", layer: geojsonAuxiliar },
-      { label: "Homicidio AF 2011", layer: geojsonAuxiliar },
-      { label: "Homicidio CC 2011", layer: geojsonAuxiliar },
-      { label: "Homicidio AE 2011", layer: geojsonAuxiliar },
-    ],
-  },
-  {
-    label: "2012",
-    collapsed: true,
-    children: [
-      { label: "Homicidio 2012", layer: geojsonAuxiliar },
-      { label: "Homicidio OC 2012", layer: geojsonAuxiliar },
-      { label: "Homicidio AF 2012", layer: geojsonAuxiliar },
-      { label: "Homicidio CC 2012", layer: geojsonAuxiliar },
-      { label: "Homicidio AE 2012", layer: geojsonAuxiliar },
-    ],
-  },
-  {
-    label: "2013",
-    collapsed: true,
-    children: [
-      { label: "Homicidio 2013", layer: geojsonAuxiliar },
-      { label: "Homicidio OC 2013", layer: geojsonAuxiliar },
-      { label: "Homicidio AF 2013", layer: geojsonAuxiliar },
-      { label: "Homicidio CC 2013", layer: geojsonAuxiliar },
-      { label: "Homicidio AE 2013", layer: geojsonAuxiliar },
-    ],
-  },
-  {
-    label: "2014",
-    collapsed: true,
-    children: [
-      { label: "Homicidio 2014", layer: geojsonAuxiliar },
-      { label: "Homicidio OC 2014", layer: geojsonAuxiliar },
-      { label: "Homicidio AF 2014", layer: geojsonAuxiliar },
-      { label: "Homicidio CC 2014", layer: geojsonAuxiliar },
-      { label: "Homicidio AE 2014", layer: geojsonAuxiliar },
-    ],
-  },
-  {
-    label: "2015",
-    collapsed: true,
-    children: [
-      { label: "Homicidio 2015", layer: geojsonAuxiliar },
-      { label: "Homicidio OC 2015", layer: geojsonAuxiliar },
-      { label: "Homicidio AF 2015", layer: geojsonAuxiliar },
-      { label: "Homicidio CC 2015", layer: geojsonAuxiliar },
-      { label: "Homicidio AE 2015", layer: geojsonAuxiliar },
-    ],
-  },
-  {
-    label: "2016",
-    collapsed: true,
-    children: [
-      { label: "Homicidio 2016", layer: geojsonAuxiliar },
-      { label: "Homicidio OC 2016", layer: geojsonAuxiliar },
-      { label: "Homicidio AF 2016", layer: geojsonAuxiliar },
-      { label: "Homicidio CC 2016", layer: geojsonAuxiliar },
-      { label: "Homicidio AE 2016", layer: geojsonAuxiliar },
-    ],
-  },
-  {
-    label: "2017",
-    collapsed: true,
-    children: [
-      { label: "Homicidio 2017", layer: geojsonAuxiliar },
-      { label: "Homicidio OC 2017", layer: geojsonAuxiliar },
-      { label: "Homicidio AF 2017", layer: geojsonAuxiliar },
-      { label: "Homicidio CC 2017", layer: geojsonAuxiliar },
-      { label: "Homicidio AE 2017", layer: geojsonAuxiliar },
-    ],
-  },
-  {
-    label: "2018",
-    collapsed: true,
-    children: [
-      { label: "Homicidio 2018", layer: geojsonAuxiliar },
-      { label: "Homicidio OC 2018", layer: geojsonAuxiliar },
-      { label: "Homicidio AF 2018", layer: geojsonAuxiliar },
-      { label: "Homicidio CC 2018", layer: geojsonAuxiliar },
-      { label: "Homicidio AE 2018", layer: geojsonAuxiliar },
-    ],
-  },
-];
+  });
+}
 
 
 
