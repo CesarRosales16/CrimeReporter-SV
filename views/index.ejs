@@ -4,7 +4,7 @@
     <title>Crime Reporter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Load Leaflet code library - see updates at http://leafletjs.com/download.html -->
     <link
       rel="stylesheet"
@@ -37,11 +37,22 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+
     <link rel="stylesheet" href="/stylesheets/L.Control.Layers.Tree.css" />
     <!-- Position the map with Cascading Style Sheet (CSS) -->
   </head>
   <body>
     <!-- Insert HTML division tag to layout the map -->
+    <div class="preload">
+      <div class="logo">
+        <img src="./img/CrimeReporterLOGO.png" alt="CrimeReporterLOGO">
+      </div>
+      <div class="loader-frame">
+          <div class="loader1" id="loader1"> </div>
+          <div class="loader2" id="loader2"> </div>
+      </div>
+  </div>
+    
     <div id="map"></div>
     <!-- Insert Javascript (.js) code to create the map -->
     <script src="/javascripts/plugins/L.Control.Layers.Tree.js"></script>

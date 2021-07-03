@@ -1,3 +1,20 @@
+
+const loader = document.querySelector('.preload');
+const mainmap = document.querySelector('#map');
+
+function init() {
+  setTimeout(() => {
+    loader.style.opacity = 0;
+    loader.style.display = 'none';
+
+    setTimeout(() => (mainmap.style.opacity = 1
+    ), 50);
+  }, 1500);
+}
+
+init()
+
+
 var map = L.map("map", {
   center: [13.8333, -88.9167], // EDIT latitude, longitude to re-center map
   zoom: 9, // EDIT from 1 to 18 -- decrease to zoom out, increase to zoom in
@@ -12,13 +29,13 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
 }).addTo(map); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default}
 
 var title = L.control({ position: "topright" });
-        title.onAdd = function (map) {
-            var div = L.DomUtil.create('div', 'info');
-            div.innerHTML +=
-                '<h2>   <img src="./img/CrimeReporterLOGO.png" alt="CrimeReporterLOGO" width="330" height="60">   </h2 Registro de delitos en El Salvador' ;
-            return div;
-        };
-        title.addTo(map);
+title.onAdd = function (map) {
+  var div = L.DomUtil.create('div', 'info');
+  div.innerHTML +=
+    '<h2>   <img src="./img/CrimeReporterLOGO.png" alt="CrimeReporterLOGO" width="330" height="60">   </h2 Registro de delitos en El Salvador';
+  return div;
+};
+title.addTo(map);
 
 
 var info = L.control();
@@ -63,18 +80,18 @@ function getColor(d) {
   return d < 1
     ? "#eddd95"
     : d < 2
-    ? "#FEB24C"
-    : d < 3
-    ? "#FD8D3C"
-    : d < 4
-    ? "#FC4E2A"
-    : d < 7
-    ? "#BD0026"
-    : d < 15
-    ? "#800026"
-    : d < 200
-    ? "#660320"
-    : "#360111";
+      ? "#FEB24C"
+      : d < 3
+        ? "#FD8D3C"
+        : d < 4
+          ? "#FC4E2A"
+          : d < 7
+            ? "#BD0026"
+            : d < 15
+              ? "#800026"
+              : d < 200
+                ? "#660320"
+                : "#360111";
 }
 
 function style({ properties }) {
@@ -175,16 +192,16 @@ legend.onAdd = function (map) {
     from,
     to;
 
-  for (var i = 0; i < grades.length-1; i++) {
+  for (var i = 0; i < grades.length - 1; i++) {
     from = grades[i];
     to = grades[i + 1];
     console.log(from, to);
     labels.push(
       '<i style="background:' +
-        getColor(from) +
-        '" ></i> ' + '<p> '+ 
-        from +
-        (to ? " &ndash; " + to : "+") +  '</p> ' + ' <br> '
+      getColor(from) +
+      '" ></i> ' + '<p> ' +
+      from +
+      (to ? " &ndash; " + to : "+") + '</p> ' + ' <br> '
     );
   }
   console.log(labels)
