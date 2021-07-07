@@ -14,7 +14,7 @@
 
 
 
-## Generalidades 📌
+## Generalidades 
 Herramientas y licencias 🔨
  
   📌[Leaflet](https://leafletjs.com/) 🌎
@@ -30,7 +30,7 @@ Herramientas y licencias 🔨
    Licencia: <strong>BSD</strong> 
    
    
-📌Contribuidores ✏️
+## Contribuidores ✏️
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
