@@ -29,6 +29,30 @@ Herramientas y licencias 🔨
    Es un framework minimalista escrito en Python que permite crear aplicaciones web rápidamente y con un mínimo número de líneas de código. Está basado en la especificación WSGI de Werkzeug y el motor de templates Jinja2.<br>
    Licencia: <strong>BSD</strong> 
    
+   
+📌Contribuidores ✏️
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table align="center">
+  <tr>
+    <td align="center"><a href="https://github.com/danmerb"><img src="https://avatars.githubusercontent.com/u/37198208?v=4" width="100px;" alt=""/><br /><sub><b> Jeniffer Merino </b></sub></a><br /> <a href="#" title="Diseño">🎨</a> <a href="#" title="Documentación">📑</a> <a href="#" title="Modelo">📈</a> </td>
+    <td align="center"><a href="https://github.com/AzzarCM"><img src="https://avatars.githubusercontent.com/u/37192145?v=4" width="100px;" alt=""/><br /><sub><b>Cristian Mundo</b></sub></a><br /><a href="#" title="Código">💻</a> <a href="#" title="Diseño">🎨</a> <a href="#" title="Infrastructura (Hosting, Build-Tools, etc)">☁️</a> </td>
+    <td align="center"><a href="https://github.com/dannielarenderos"><img src="https://avatars.githubusercontent.com/u/37196864?v=4" width="100px;" alt=""/><br /><sub><b> Danniela Renderos</b></sub></a><br /><a href="#" title="Código">💻</a> <a href="#" title="Documentación">📑</a> <a href="#" title="Diseño">🎨</a>  </td>
+    <td align="center"><a href="https://github.com/CesarRosales16"><img src="https://avatars.githubusercontent.com/u/37197605?v=4" width="100px;" alt=""/><br /><sub><b> César Rosales </b></sub></a><br /><a href="#" title="Documentación">📑</a> <a href="#" title="Modelo">📈</a>   <a href="#" title="Pull Requests">👀</a> </td>    
+    <td align="center"><a href="https://github.com/Ackerize"><img src="https://avatars.githubusercontent.com/u/37277365?v=4" width="100px;" alt=""/><br /><sub><b>Rudi Gonzales </b></sub></a><br /><a href="#" title="Código">💻</a> <a href="#" title="Diseño">🎨</a>  <a href="#" title="Infrastructura (Hosting, Build-Tools, etc)">☁️</a> </td>
+    
+  </tr>
+</table>
+
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+Este proyecto sigue las especificaciones de [all-contributors](https://github.com/all-contributors/all-contributors). Cualquier tipo de contribuciones son bienvenidas!
+   
 
     
 
