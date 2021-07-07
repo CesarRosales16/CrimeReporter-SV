@@ -25,14 +25,14 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
     ' | Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>',
 }).addTo(map);
 
-var title = L.control({ position: "topright" });
-title.onAdd = function (map) {
+var logo = L.control({ position: "topright" });
+logo.onAdd = function (map) {
   var div = L.DomUtil.create('div', 'info');
   div.innerHTML +=
     '<h2>   <img src="./img/CrimeReporterLOGO.png" alt="CrimeReporterLOGO" width="auto" height="60">   </h2 Registro de delitos en El Salvador';
   return div;
 };
-title.addTo(map);
+logo.addTo(map);
 
 
 var info = L.control();
@@ -210,9 +210,9 @@ var legend_description = L.control({ position: "topleft" });
 
 legend_description.onAdd = function (map) {
   var div = L.DomUtil.create("div", "info legend_description"),
-    labels = [' <h3> <strong> SIGNIFICADO </strong>   </h3>'];
+    labels = [' <h3 class="title_legend"> <strong> LEYENDA </strong>   </h3>'];
 
-  labels.push('<p> ' + 'OC:  Contundente' + '</p> ' + '<p> ' +
+  labels.push('<p> ' + 'OC: Obj. Contundente' + '</p> ' + '<p> ' +
    'AF: Arma de Fuego' + '</p> ' + '<p> ' + 'CC: Cortocontundente' + 
    '</p> ' + '<p> ' + 'AE: Estrangulamiento' + '</p> ');
   div.innerHTML = labels.join('');
@@ -232,20 +232,3 @@ button.onAdd = function (map) {
 }
 
 button.addTo(map);
-
-var btnOpenModal = document.querySelector('.float');
-
-btnOpenModal.addEventListener("click", () => console.log('Click'));
-
-var toggle = document.querySelector(".leaflet-control-layers.leaflet-control");
-static();
-
-toggle.addEventListener("mouseover", static, false);
-toggle.addEventListener("mouseout", static, false);
-
-function static() {
-  toggle.classList.add("leaflet-control-layers-expanded");
-}
-
-
-

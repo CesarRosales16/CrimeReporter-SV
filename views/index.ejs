@@ -11,6 +11,17 @@
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <!-- Moment Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
+    <!-- Year Picker CSS -->
+    <link rel="stylesheet" href="/stylesheets/yearpicker.css" />
+
+    
+
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <link
       rel="shortcut icon"
@@ -53,11 +64,28 @@
           <div class="loader2" id="loader2"> </div>
       </div>
   </div>
-    
+  <div class="backdrop"></div>
+
+
+  <div class="modal">
+      <h1 class="modal-title">Elige un año</h1>
+      <div class="modal-input">
+        <input type="text" class="yearpicker form-control picker-input" value="" />
+      </div>
+      <div class="modal-actions">
+          <button type="button" class="btn btn-cancel">Cancel</button>
+          <button type="button" class="btn btn-confirm">Confirm</button>
+      </div>
+  </div>
     <div id="map"></div>
+
+    
     <!-- Insert Javascript (.js) code to create the map -->
     <script src="/javascripts/plugins/L.Control.Layers.Tree.js"></script>
     <script src="/javascripts/data/delitos.js"></script>
     <script src="/javascripts/choropleth.js"></script>
+    <!-- Year Picker Js -->
+    <script src="/javascripts/plugins/yearpicker.js"></script>
+    <script src="/javascripts/modal.js"></script>
   </body>
 </html>
