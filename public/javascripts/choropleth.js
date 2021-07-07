@@ -232,6 +232,18 @@ legend2.onAdd = function (map) {
 
 legend2.addTo(map);
 
+var button = L.control({ position: "bottomright" });
+
+button.onAdd = function (map) {
+  var div = L.DomUtil.create("div", ""),
+  boton = [' <a href="#" class="float"> <i class="fa fa-plus my-float"></i> </a>'];
+  div.innerHTML = boton.join('');
+  console.log(div.innerHTML)
+  return div;
+}
+
+button.addTo(map);
+
 var toggle = document.querySelector(".leaflet-control-layers.leaflet-control");
 static();
 

@@ -105,6 +105,25 @@ body {
 }
 
 
+.float{
+	position:fixed;
+	width:60px;
+  font-size: 20px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color: #0C9;
+	color:#FFF !important;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+	margin-top:22px;
+}
+
+
 
 @keyframes clockwisespin {
   from { transform: rotate(0deg);}
