@@ -104,6 +104,8 @@ body {
   animation: anticlockwisespin 1.5s linear infinite;
 }
 
+
+
 @keyframes clockwisespin {
   from { transform: rotate(0deg);}
   to { transform: rotate(360deg);}
