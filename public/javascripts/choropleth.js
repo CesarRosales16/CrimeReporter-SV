@@ -1,4 +1,3 @@
-
 const loader = document.querySelector('.preload');
 const mainmap = document.querySelector('#map');
 
@@ -14,25 +13,23 @@ function init() {
 
 init()
 
-
 var map = L.map("map", {
-  center: [13.8333, -88.9167], // EDIT latitude, longitude to re-center map
-  zoom: 9, // EDIT from 1 to 18 -- decrease to zoom out, increase to zoom in
+  center: [13.8333, -88.9167],
+  zoom: 9,
   scrollWheelZoom: true,
   tap: true,
 });
 
-// display Carto basemap tiles with light features and labels
 L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
   attribution:
     ' | Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>',
-}).addTo(map); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default}
+}).addTo(map);
 
 var title = L.control({ position: "topright" });
 title.onAdd = function (map) {
   var div = L.DomUtil.create('div', 'info');
   div.innerHTML +=
-    '<h2>   <img src="./img/CrimeReporterLOGO.png" alt="CrimeReporterLOGO" width="330" height="60">   </h2 Registro de delitos en El Salvador';
+    '<h2>   <img src="./img/CrimeReporterLOGO.png" alt="CrimeReporterLOGO" width="auto" height="60">   </h2 Registro de delitos en El Salvador';
   return div;
 };
 title.addTo(map);
@@ -76,20 +73,20 @@ info.update = function (props) {
       : "Colocar cursor sobre municipio ");
 };
 
-function getColor(d) {
-  return d < 1
+function getColor(density) {
+  return density < 1
     ? "#eddd95"
-    : d < 2
+    : density < 2
       ? "#FEB24C"
-      : d < 3
+      : density < 3
         ? "#FD8D3C"
-        : d < 4
+        : density < 4
           ? "#FC4E2A"
-          : d < 7
+          : density < 7
             ? "#BD0026"
-            : d < 15
+            : density < 15
               ? "#800026"
-              : d < 200
+              : density < 200
                 ? "#660320"
                 : "#360111";
 }
@@ -161,10 +158,10 @@ geojsonAuxiliar = L.geoJson(data, {
   onEachFeature: onEachFeature,
 });
 
-var baseTree = [];
+var dropdown_etiquetas = [];
 
 for (let year = 2008; year <= 2018; year++) {
-  baseTree.push({
+  dropdown_etiquetas.push({
     label: `${year}`,
     collapsed: true,
     children: [
@@ -177,16 +174,14 @@ for (let year = 2008; year <= 2018; year++) {
   });
 }
 
-
-
-L.control.layers.tree(baseTree).addTo(map);
+L.control.layers.tree(dropdown_etiquetas).addTo(map);
 
 info.addTo(map);
 
-var legend = L.control({ position: "topleft" });
+var legend_categorias = L.control({ position: "topleft" });
 
-legend.onAdd = function (map) {
-  var div = L.DomUtil.create("div", "info legend"),
+legend_categorias.onAdd = function (map) {
+  var div = L.DomUtil.create("div", "info legend_categorias"),
     grades = [0, 1, 2, 3, 4, 7, 10, 200, 1000],
     labels = [' <h3> <strong> Categorías </strong>   </h3> <br>'],
     from,
@@ -195,7 +190,6 @@ legend.onAdd = function (map) {
   for (var i = 0; i < grades.length - 1; i++) {
     from = grades[i];
     to = grades[i + 1];
-    console.log(from, to);
     labels.push(
       '<i style="background:' +
       getColor(from) +
@@ -204,33 +198,29 @@ legend.onAdd = function (map) {
       (to ? " &ndash; " + to : "+") + '</p> ' + ' <br> '
     );
   }
-  console.log(labels)
   div.innerHTML = labels.join('');
-  console.log(div.innerHTML)
 
   return div;
 };
 
-legend.addTo(map);
+legend_categorias.addTo(map);
 
 
-var legend2 = L.control({ position: "topleft" });
+var legend_description = L.control({ position: "topleft" });
 
-legend2.onAdd = function (map) {
-  var div = L.DomUtil.create("div", "info legend2"),
+legend_description.onAdd = function (map) {
+  var div = L.DomUtil.create("div", "info legend_description"),
     labels = [' <h3> <strong> SIGNIFICADO </strong>   </h3>'];
 
   labels.push('<p> ' + 'OC:  Contundente' + '</p> ' + '<p> ' +
    'AF: Arma de Fuego' + '</p> ' + '<p> ' + 'CC: Cortocontundente' + 
    '</p> ' + '<p> ' + 'AE: Estrangulamiento' + '</p> ');
-  console.log(labels)
   div.innerHTML = labels.join('');
-  console.log(div.innerHTML)
 
   return div;
 };
 
-legend2.addTo(map);
+legend_description.addTo(map);
 
 var button = L.control({ position: "bottomright" });
 
@@ -238,11 +228,14 @@ button.onAdd = function (map) {
   var div = L.DomUtil.create("div", ""),
   boton = [' <a href="#" class="float"> <i class="fa fa-plus my-float"></i> </a>'];
   div.innerHTML = boton.join('');
-  console.log(div.innerHTML)
   return div;
 }
 
 button.addTo(map);
+
+var btnOpenModal = document.querySelector('.float');
+
+btnOpenModal.addEventListener("click", () => console.log('Click'));
 
 var toggle = document.querySelector(".leaflet-control-layers.leaflet-control");
 static();

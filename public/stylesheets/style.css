@@ -27,14 +27,14 @@ body {
   color: #777;
 }
 
-.legend {
+.legend_categorias {
   text-align: center;
   line-height: 1px;
   width: 59%;
   color: rgb(112, 111, 111);
 }
 
-.legend i{
+.legend_categorias i{
   width: 18px;
   height: 18px;
   border-radius: 10px;
@@ -43,7 +43,7 @@ body {
   opacity: 0.7;
 }
 
-.legend2 {
+.legend_description {
   text-align: center;
   line-height: 1px;
   width: 86%;
