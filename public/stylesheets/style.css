@@ -30,7 +30,7 @@ body {
 .legend {
   text-align: center;
   line-height: 1px;
-  width: 100%;
+  width: 59%;
   color: rgb(112, 111, 111);
 }
 
@@ -41,6 +41,13 @@ body {
   float: left;
   margin-right: 8px;
   opacity: 0.7;
+}
+
+.legend2 {
+  text-align: center;
+  line-height: 1px;
+  width: 86%;
+  color: rgb(112, 111, 111);
 }
 
 .preload {
@@ -58,7 +65,7 @@ body {
   width: 460px;
   height: 110px;
   position: absolute;
-  top: 46%;
+  top: 44%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -68,7 +75,7 @@ body {
   height: 70%;
   margin: auto;
   position: absolute;
-  top: 55%;
+  top: 57%;
   left: 50%;
 }
 

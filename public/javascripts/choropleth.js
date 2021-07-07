@@ -213,6 +213,25 @@ legend.onAdd = function (map) {
 
 legend.addTo(map);
 
+
+var legend2 = L.control({ position: "topleft" });
+
+legend2.onAdd = function (map) {
+  var div = L.DomUtil.create("div", "info legend2"),
+    labels = [' <h3> <strong> SIGNIFICADO </strong>   </h3>'];
+
+  labels.push('<p> ' + 'OC:  Contundente' + '</p> ' + '<p> ' +
+   'AF: Arma de Fuego' + '</p> ' + '<p> ' + 'CC: Cortocontundente' + 
+   '</p> ' + '<p> ' + 'AE: Estrangulamiento' + '</p> ');
+  console.log(labels)
+  div.innerHTML = labels.join('');
+  console.log(div.innerHTML)
+
+  return div;
+};
+
+legend2.addTo(map);
+
 var toggle = document.querySelector(".leaflet-control-layers.leaflet-control");
 static();
 
