@@ -29,7 +29,7 @@ var logo = L.control({ position: "topright" });
 logo.onAdd = function (map) {
   var div = L.DomUtil.create('div', 'info');
   div.innerHTML +=
-    '<h2>   <img src="./img/CrimeReporterLOGO.png" alt="CrimeReporterLOGO" width="auto" height="60">   </h2 Registro de delitos en El Salvador';
+    '<h2>   <img src="./img/CrimeReporterLOGO.png" alt="CrimeReporterLOGO" width="180" height="40">   </h2 Registro de delitos en El Salvador';
   return div;
 };
 logo.addTo(map);
@@ -182,7 +182,7 @@ var legend_categorias = L.control({ position: "topleft" });
 
 legend_categorias.onAdd = function (map) {
   var div = L.DomUtil.create("div", "info legend_categorias"),
-    grades = [0, 1, 2, 3, 4, 7, 10, 200, 1000],
+    grades = [0, 1, 2, 3, 4, 7, 10, 200, 400],
     labels = [' <h3> <strong> Categorías </strong>   </h3> <br>'],
     from,
     to;
