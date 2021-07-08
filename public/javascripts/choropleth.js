@@ -1,6 +1,7 @@
 const loader = document.querySelector('.preload');
 const mainmap = document.querySelector('#map');
 
+//Función que inicializa preloader 
 function init() {
   setTimeout(() => {
     loader.style.opacity = 0;
@@ -13,6 +14,7 @@ function init() {
 
 init()
 
+//Centrar el mapa con las coordenadas de El Salvador  
 var map = L.map("map", {
   center: [13.8333, -88.9167],
   zoom: 9,
@@ -20,11 +22,13 @@ var map = L.map("map", {
   tap: true,
 });
 
+//Define que mapa se utilizará, en este caso Carto
 L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
   attribution:
     ' | Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>',
 }).addTo(map);
 
+//Posicionar logo en parte superior derecha del mapa
 var logo = L.control({ position: "topright" });
 logo.onAdd = function (map) {
   var div = L.DomUtil.create('div', 'info');
@@ -34,11 +38,13 @@ logo.onAdd = function (map) {
 };
 logo.addTo(map);
 
-
+//Controla la información que se desplega
 var info = L.control();
 
+//Indica capa base e inicial del mapa
 var currentLayer = "Homicidio 2008";
 
+//Convierte valores null a 0 
 const validValue = (value) => (value ? parseInt(value) : 0);
 
 info.onAdd = function (map) {
@@ -47,6 +53,7 @@ info.onAdd = function (map) {
   return this._div;
 };
 
+//Controla que capa se selecciona para ser representada en el mapa
 const getCurrentLayer = (props) => {
   const labels = currentLayer.split(" ");
   switch (labels.length) {
@@ -64,6 +71,7 @@ const getCurrentLayer = (props) => {
   }
 };
 
+//Actualiza la información del municipio y el total de casos al seleccionar una capa
 info.update = function (props) {
   const selectedLayer = props && getCurrentLayer(props);
   this._div.innerHTML =
@@ -73,6 +81,7 @@ info.update = function (props) {
       : "Colocar cursor sobre municipio ");
 };
 
+//Función que recibe el total de casos por homicidios y le asigna un color al municipio de acuerdo al numero
 function getColor(density) {
   return density < 1
     ? "#eddd95"
@@ -91,6 +100,7 @@ function getColor(density) {
                 : "#360111";
 }
 
+//Función que asigna el color que tomará el municipio según el total de casos en este
 function style({ properties }) {
   return {
     fillColor: getColor(getCurrentLayer(properties)),
@@ -102,6 +112,7 @@ function style({ properties }) {
   };
 }
 
+//Función que al posicionar el cursor sobre un municipio, cambia el estilo de este 
 function highlightFeature({ target }) {
   var layer = target;
 
@@ -120,6 +131,7 @@ function highlightFeature({ target }) {
 
 var geojsonBase, geojsonAuxiliar;
 
+//Función que cambia el estilo del mapa, según la capa seleccionada
 function resetHighlight({ target }) {
   geojsonBase.resetStyle(target);
   geojsonAuxiliar.resetStyle(target);
@@ -130,6 +142,7 @@ function zoomToFeature(e) {
   map.fitBounds(e.target.getBounds());
 }
 
+//Función que asigna propiedades para destacar y zoom 
 function onEachFeature(feature, layer) {
   layer.on({
     mouseover: highlightFeature,
@@ -138,6 +151,7 @@ function onEachFeature(feature, layer) {
   });
 }
 
+//geoJason que recibe la data y la coloca en el mapa
 geojsonBase = L.geoJson(data, {
   style: style,
   onEachFeature: onEachFeature,
@@ -153,6 +167,7 @@ map.on("baselayerchange", function ({ layer }) {
   layer.setStyle(style);
 });
 
+//geoJason que recibe la data y la coloca en el mapa
 geojsonAuxiliar = L.geoJson(data, {
   style: style,
   onEachFeature: onEachFeature,
@@ -160,6 +175,7 @@ geojsonAuxiliar = L.geoJson(data, {
 
 var dropdown_etiquetas = [];
 
+//Función que crea un dropdown desde 2008 hasta 2018 con la información correspondiente
 for (let year = 2008; year <= 2018; year++) {
   dropdown_etiquetas.push({
     label: `${year}`,
@@ -178,6 +194,7 @@ L.control.layers.tree(dropdown_etiquetas).addTo(map);
 
 info.addTo(map);
 
+//Leyenda para representación de totales de delitos 
 var legend_categorias = L.control({ position: "topleft" });
 
 legend_categorias.onAdd = function (map) {
@@ -205,7 +222,7 @@ legend_categorias.onAdd = function (map) {
 
 legend_categorias.addTo(map);
 
-
+//Leyenda informativa de abreviaciones usadas en capas 
 var legend_description = L.control({ position: "topleft" });
 
 legend_description.onAdd = function (map) {
@@ -222,6 +239,7 @@ legend_description.onAdd = function (map) {
 
 legend_description.addTo(map);
 
+//Botón que inicializa Ventana Model
 var button = L.control({ position: "bottomright" });
 
 button.onAdd = function (map) {
