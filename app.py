@@ -16,13 +16,19 @@ def predict():
             json_request = request.json
             print(json_request)        
             year = int(json_request[0]["year"]) if type(json_request) == type([]) else int(json_request["year"])
-            json_response = {}
+            array_response = []
             for mun_enc in range(0,262):
                 #print(mun.get(mun_enc))
                 prediction = rbf.predict([[year, mun_enc]])[0]
                 prediction_result = int(np.ceil(np.abs(prediction)))
-                json_response[mun.get(mun_enc)] = prediction_result
-            return jsonify(json_response)
+                mun_split = mun.get(mun_enc).split(',')
+                array_response.append({
+                    "codigo_cat": mun_enc,
+                    "nom_dpto": mun_split[0],
+                    "nom_mun": mun_split[1],                    
+                    "total": prediction_result
+                })
+            return jsonify(array_response)
 
         except:
             return jsonify({'trace': traceback.format_exc()})
