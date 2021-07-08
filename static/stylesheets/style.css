@@ -222,7 +222,36 @@ body {
 
 .modal-actions {
   text-align: right;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
 }
 .modal-title{
   text-align: center;
+}
+
+/* creating css loader */
+
+.loading-response {
+  width: 2rem;
+  height: 2rem;
+  border: 5px solid #f3f3f3;
+  border-top: 6px solid #00CC99;
+  border-radius: 100%;
+  margin: auto;
+  display: none;
+  animation: spin 1s infinite linear;
+  margin-bottom: 2rem;
+  z-index: 10000;
+}
+.loading-response.display {
+  display: block;
+}
+@keyframes spin {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
 }

@@ -52,7 +52,7 @@
     <!-- Insert HTML division tag to layout the map -->
     <div class="preload">
       <div class="logo">
-        <img src="./img/CrimeReporterLOGO.png" alt="CrimeReporterLOGO">
+        <img src="../static/img/CrimeReporterLOGO.png" alt="CrimeReporterLOGO">
       </div>
       <div class="loader-frame">
           <div class="loader1" id="loader1"> </div>
@@ -61,26 +61,27 @@
   </div>
   <div class="backdrop"></div>
 
-
+  
   <div class="modal">
-      <h1 class="modal-title">Elige un año</h1>
+      <h1 class="modal-title">Elige un año a predecir</h1>
       <div class="modal-input">
         <input type="text" class="yearpicker form-control picker-input" value="" />
       </div>
+      <div class="loading-response"></div>
       <div class="modal-actions">
           <button type="button" class="btn btn-cancel">Cancelar</button>
           <button type="button" class="btn btn-confirm">Predecir</button>
       </div>
   </div>
-    <div id="map"></div>
+  
+  <div id="map"></div>
 
     
     <!-- Insert Javascript (.js) code to create the map -->
-    <script src="/javascripts/plugins/L.Control.Layers.Tree.js"></script>
-    <script src="/javascripts/data/delitos.js"></script>
-    <script src="/javascripts/choropleth.js"></script>
+    <script src="../static/javascripts/plugins/L.Control.Layers.Tree.js"></script>
+    <script src="../static/javascripts/data/delitos.js"></script>
     <!-- Year Picker Js -->
-    <script src="/javascripts/plugins/yearPicker.js"></script>
-    <script src="/javascripts/modal.js"></script>
+    <script src="../static/javascripts/plugins/yearPicker.js"></script>
+    <script src="../static/javascripts/choropleth.js"></script>
   </body>
 </html>
