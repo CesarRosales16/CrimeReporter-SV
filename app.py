@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import joblib
 import traceback
 import pandas as pd
@@ -8,6 +8,10 @@ app = Flask(__name__)
 rbf = joblib.load("model/modelo_rbf.pkl")
 mun = joblib.load("model/encode_mun.pkl")
 
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
