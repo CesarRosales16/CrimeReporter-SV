@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
+    <title>Crime Reporter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Load Leaflet code library - see updates at http://leafletjs.com/download.html -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <!-- Moment Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
+    <!-- Year Picker CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/yearpicker.css') }}"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <!-- Load jQuery and PapaParse to read data from a CSV file -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/L.Control.Layers.Tree.css') }}" />
+    <!-- Position the map with Cascading Style Sheet (CSS) -->
+  </head>
+  <body>
+    <!-- Insert HTML division tag to layout the map -->
+    <div class="preload">
+      <div class="logo">
+        <img src="../static/img/CrimeReporterLOGO.png" alt="CrimeReporterLOGO">
+      </div>
+      <div class="loader-frame">
+          <div class="loader1" id="loader1"> </div>
+          <div class="loader2" id="loader2"> </div>
+      </div>
+  </div>
+  <div class="backdrop"></div>
+
+  
+  <div class="modal">
+      <h1 class="modal-title">Elige un año a predecir</h1>
+      <div class="modal-input">
+        <input type="text" class="yearpicker form-control picker-input" value="" />
+      </div>
+      <div class="loading-response"></div>
+      <div class="modal-actions">
+          <button type="button" class="btn btn-cancel">Cancelar</button>
+          <button type="button" class="btn btn-confirm">Predecir</button>
+      </div>
+  </div>
+  
+  <div id="map"></div>
+
+    
+    <!-- Insert Javascript (.js) code to create the map -->
+    <script src="../static/javascripts/plugins/L.Control.Layers.Tree.js"></script>
+    <script src="../static/javascripts/data/delitos.js"></script>
+    <!-- Year Picker Js -->
+    <script src="../static/javascripts/plugins/yearPicker.js"></script>
+    <script src="../static/javascripts/choropleth.js"></script>
+  </body>
+</html>
