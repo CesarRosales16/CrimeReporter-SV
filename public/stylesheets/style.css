@@ -201,9 +201,10 @@ body {
 .picker-input{
   border-radius: 10px;
   text-align: center;
-  border-color: #09c;
-  border-width: 1px;
   outline: none;
+  height: 30px;
+  font-size: 1.3rem;
+  border: 2px solid #09c;
 }
 
 

@@ -8,6 +8,9 @@
 
 .yearpicker-container {
     position: absolute;
+    top: 55% !important;
+    left: 50% !important;
+    transform: translateX(-45%) !important;
     color: var(--text-color);
     width: 280px;
     border: 1px solid var(--border-color);
