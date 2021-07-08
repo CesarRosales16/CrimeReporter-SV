@@ -199,7 +199,7 @@ var legend_categorias = L.control({ position: "topleft" });
 
 legend_categorias.onAdd = function (map) {
   var div = L.DomUtil.create("div", "info legend_categorias"),
-    grades = [0, 1, 2, 3, 4, 7, 10, 200, 400],
+    grades = [0, 1, 2, 3, 4, 7, 10, 200, 500],
     labels = [' <h3> <strong> Categorías </strong>   </h3> <br>'],
     from,
     to;
