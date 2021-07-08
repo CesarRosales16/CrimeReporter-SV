@@ -43,6 +43,7 @@ Herramientas y licencias 🔨
     <td align="center"><a href="https://github.com/CesarRosales16"><img src="https://avatars.githubusercontent.com/u/37197605?v=4" width="100px;" alt=""/><br /><sub><b> César Rosales </b></sub></a><br /><a href="#" title="Documentación">📑</a> <a href="#" title="Modelo">📈</a>   <a href="#" title="Pull Requests">🔍</a> </td>    
     <td align="center"><a href="https://github.com/Ackerize"><img src="https://avatars.githubusercontent.com/u/37277365?v=4" width="100px;" alt=""/><br /><sub><b>Rudi González </b></sub></a><br /><a href="#" title="Código">💻</a> <a href="#" title="Diseño">🎨</a>  <a href="#" title="Infrastructura (Hosting, Build-Tools, etc)">☁️</a> </td>
     
+      
   </tr>
 </table>
 
