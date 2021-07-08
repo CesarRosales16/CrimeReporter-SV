@@ -1,6 +1,6 @@
 <p align="center">
     <span>
-      <a href="https://crime-reporter-sv.herokuapp.com/" target="blank"><img src="https://github.com/dannielarenderos/WebMappingMunicipiosRiosCerrosES/blob/main/img/CrimeReporterLOGO.png" width="500" alt="Crime Reporter SV" /></a>
+      <a href="https://crime-reporter-sv.herokuapp.com/" target="_blank"><img src="https://github.com/dannielarenderos/WebMappingMunicipiosRiosCerrosES/blob/main/img/CrimeReporterLOGO.png" width="500" alt="Crime Reporter SV" /></a>
     </span>
     <br/>
     <span>
