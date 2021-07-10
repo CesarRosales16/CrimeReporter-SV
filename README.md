@@ -12,6 +12,12 @@
     </span>
 </p>
 
+## Fuente de datos 
+<p align="center">
+    <span>
+      <a href="https://www.aas.jjay.cuny.edu/single-post/base-de-datos?fbclid=IwAR3Itx49fRZJoazPUPWYLpASA3bag7UjRUCzey4pvtec5O9mjdwG9QLboUE" target="_blank"><img src="https://github.com/CesarRosales16/CrimeReporter-SV/blob/main/img/fuentedatos.png" width="500" alt="Crime Reporter SV" /></a>
+    </span>
+    </p>
 
 
 ## Generalidades 
