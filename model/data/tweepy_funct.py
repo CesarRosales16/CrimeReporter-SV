@@ -19,7 +19,7 @@ def printtweetdata(n, ith_tweet):
     print(f"Hashtags Used:{ith_tweet[2]}")
 
 def processdatawit(n, ith_tweet):
-     Witcli= Wit('ZR5CWJXSL2DWMKVYO5QQHQ7YVNQ24LRO')
+
      try:
          print(f"Tweet {n}:")
          witre= Witcli.message(ith_tweet)
@@ -105,8 +105,7 @@ def scrape( numtweet):
 
 if __name__ == '__main__':
 
-    consumer_key = "Ah42738EFXXwe3OrW5eRw3d4E"
-    consumer_secret = "fLY6Aizj0Wzh84GaZ74xLuzsBfNsJrLl4ucyPalJPihKWGY2me"
+
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     api = tweepy.API(auth)
 
