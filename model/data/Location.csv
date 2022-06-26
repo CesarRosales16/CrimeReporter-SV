@@ -1,54 +1,267 @@
-,0
-0,San Salvador
-1,San Salvador
-2,San Salvador
-3,San Salvador
-4,San Salvador
-5,San Salvador
-6,San Salvador
-7,La Libertad
-8,La Libertad
-9,La Libertad
-10,Soyapango
-11,Soyapango
-12,Soyapango
-13,Soyapango
-14,Soyapango
-15,Usulután
-16,Soyapango
-17,Soyapango
-18,Soyapango
-19,Soyapango
-20,Soyapango
-21,Soyapango
-22,Soyapango
-23,Usulután
-24,Usulután
-25,Usulután
-26,Usulután
-27,Usulután
-28,Usulután
-29,Usulután
-30,Usulután
-31,Usulután
-32,Usulután
-33,Usulután
-34,Usulután
-35,Usulután
-36,Usulután
-37,Usulután
-38,Usulután
-39,Usulután
-40,Usulután
-41,Usulután
-42,Usulután
-43,Usulután
-44,Usulután
-45,Usulután
-46,Usulután
-47,Usulután
-48,Usulután
-49,Usulután
-50,Usulután
-51,Corinto
-52,Usulután
+,0,Count
+0,Ahuachapán,0
+1,Apaneca,0
+2,Atiquizaya,0
+3,Concepción de Ataco,0
+4,El Refugio,0
+5,Guaymango,0
+6,Jujutla,0
+7,San Francisco Menéndez,0
+8,San Lorenzo,0
+9,San Pedro Puxtla,0
+10,Tacuba,0
+11,Turín,0
+12,Cabañas,0
+13,Sensuntepeque,0
+14,Cinquera,0
+15,Dolores,0
+16,Guacotecti,0
+17,Ilobasco,0
+18,Jutiapa,0
+19,San Isidro,0
+20,Tejutepeque,0
+21,Victoria,0
+22,Chalatenango,0
+23,Agua Caliente,0
+24,Arcatao,0
+25,Azacualpa,0
+26,Cancasque,0
+27,Citalá,0
+28,Comalapa,0
+29,Concepción Quezaltepeque,0
+30,Dulce Nombre de María,0
+31,El Carrizal,0
+32,El Paraíso,0
+33,La Laguna,0
+34,La Palma,0
+35,La Reina,0
+36,Las Flores,0
+37,Las Vueltas,0
+38,Nombre de Jesús,0
+39,Nueva Concepción,0
+40,Nueva Trinidad,0
+41,Ojos de Agua,0
+42,Potonico,0
+43,San Antonio de la Cruz,0
+44,San Antonio Los Ranchos,0
+45,San Fernando,0
+46,San Francisco Lempa,0
+47,San Francisco Morazán,0
+48,San Ignacio,0
+49,San Isidro Labrador,0
+50,San Luis del Carmen,0
+51,San Miguel de Mercedes,0
+52,San Rafael,0
+53,Santa Rita,0
+54,Tejutla,0
+55,Cojutepeque,0
+56,Candelaria,0
+57,El Carmen,0
+58,El Rosario,0
+59,Monte San Juan,0
+60,Oratorio de Concepción,0
+61,San Bartolomé Perulapía,0
+62,San Cristóbal,0
+63,San José Guayabal,0
+64,San Pedro Perulapán,0
+65,San Rafael Cedros,0
+66,San Ramón,0
+67,Santa Cruz Analquito,0
+68,Santa Cruz Michapa,0
+69,Suchitoto,0
+70,Tenancingo,0
+71,Santa Tecla,0
+72,Antiguo Cuscatlán,0
+73,Chiltiupán,0
+74,Ciudad Arce,0
+75,Colón,0
+76,Comasagua,0
+77,Huizúcar,0
+78,Jayaque,0
+79,Jicalapa,0
+80,La Libertad,3
+81,Nuevo Cuscatlán,0
+82,Quezaltepeque,0
+83,San Juan Opico,0
+84,Sacacoyo,0
+85,San José Villanueva,0
+86,San Matías,0
+87,San Pablo Tacachico,0
+88,Talnique,0
+89,Tamanique,0
+90,Teotepeque,0
+91,Tepecoyo,0
+92,Zaragoza,0
+93,Zacatecoluca,0
+94,Cuyultitán,0
+95,El Rosario,0
+96,Jerusalén,0
+97,Mercedes La Ceiba,0
+98,Olocuilta,0
+99,Paraíso de Osorio,0
+100,San Antonio Masahuat,0
+101,San Emigdio,0
+102,San Francisco Chinameca,0
+103,San Pedro Masahuat,0
+104,San Juan Nonualco,0
+105,San Juan Talpa,0
+106,San Juan Tepezontes,0
+107,San Luis La Herradura,0
+108,San Luis Talpa,0
+109,San Miguel Tepezontes,0
+110,San Pedro Nonualco,0
+111,San Rafael Obrajuelo,0
+112,Santa María Ostuma,0
+113,Santiago Nonualco,0
+114,Tapalhuaca,0
+115,La Unión,0
+116,Anamorós,0
+117,Bolívar,0
+118,Concepción de Oriente,0
+119,Conchagua,0
+120,El Carmen,0
+121,El Sauce,0
+122,Intipucá,0
+123,Lislique,0
+124,Meanguera del Golfo,0
+125,Nueva Esparta,0
+126,Pasaquina,0
+127,Polorós,0
+128,San Alejo,0
+129,San José,0
+130,Santa Rosa de Lima ,0
+131,Yayantique,0
+132,Yucuaiquín,0
+133,San Francisco Gotera,0
+134,Arambala,0
+135,Cacaopera,0
+136,Chilanga,0
+137,Corinto,1
+138,Delicias de Concepción,0
+139,El Divisadero,0
+140,El Rosario,0
+141,Gualococti,0
+142,Guatajiagua,0
+143,Joateca,0
+144,Jocoaitique,0
+145,Jocoro,0
+146,Lolotiquillo,0
+147,Meanguera,0
+148,Osicala,0
+149,Perquín,0
+150,San Carlos,0
+151,San Fernando,0
+152,San Isidro,0
+153,San Simón,0
+154,Sensembra,0
+155,Sociedad,0
+156,Torola,0
+157,Yamabal,0
+158,Yoloaiquín,0
+159,Ziquilas,0
+160,San Miguel ,0
+161,Carolina,0
+162,Chapeltique,0
+163,Chinameca,0
+164,Chirilagua,0
+165,Ciudad Barrios,0
+166,Comacarán,0
+167,El Tránsito,0
+168,Fundación,0
+169,Lolotique,0
+170,Moncagua,0
+171,Nueva Guadalupe,0
+172,Nuevo Edén de San Juan,0
+173,Quelepa,0
+174,San Antonio,0
+175,San Gerardo,0
+176,San Jorge,0
+177,San Luis de la Reina,0
+178,San Rafael Oriente,0
+179,Sesori,0
+180,Uluazapa,0
+181,San Salvador,7
+182,Aguilares,0
+183,Apopa,0
+184,Ayutuxtepeque,0
+185,Ciudad Delgado,0
+186,Cuscatancingo,0
+187,El Paisnal,0
+188,Guazapa,0
+189,Ilopango,0
+190,Intur,0
+191,Mejicanos,0
+192,Nejapa,0
+193,Panchimalco,0
+194,Rosario de Mora,0
+195,San Marcos,0
+196,San Martín,0
+197,Santiago Texacuangos,0
+198,Santo Tomás,0
+199,Soyapango,12
+200,Tonacatepeque,0
+201,San Vicente,0
+202,Apastepeque,0
+203,Guadalupe,0
+204,San Cayetano Istepeque,0
+205,San Esteban Catarina,0
+206,San Ildefonso,0
+207,San Lorenzo,0
+208,San Sebastián,0
+209,Santa Clara,0
+210,Santo Domingo,0
+211,Tecoluca,0
+212,Tepetitán,0
+213,Verapaz,0
+214,Santa Ana ,0
+215,Candelaria de la Frontera,0
+216,Chalchuapa,0
+217,Coatepeque,0
+218,El Congo,0
+219,El Porvenir,0
+220,Masahuat,0
+221,Metapán,0
+222,San Antonio Pajonal,0
+223,San Sebastián Salitrillo,0
+224,Santa Rosa Guachipilín,0
+225,Santiago de la Frontera,0
+226,Texistepeque,0
+227,Sonsonate,0
+228,Acajutla,0
+229,Armenia,0
+230,Caluco,0
+231,Cuisnahuat,0
+232,Izalco,0
+233,Juayúa,0
+234,Nahuizalco,0
+235,Nahulingo,0
+236,Salcoatitán,0
+237,San Antonio del Monte,0
+238,San Julián,0
+239,Santa Catarina Masahuat,0
+240,Santa Isabel Ishuatán,0
+241,Santo Domingo de Guzmán,0
+242,Sonzacate,0
+243,Usulután,30
+244,Alegría,0
+245,Berlín,0
+246,California,0
+247,Concepción Batres,0
+248,El Triunfo,0
+249,Ereguayquín,0
+250,Estanzuelas,0
+251,Jiquilisco,0
+252,Jucuapa,0
+253,Jucuarán,0
+254,Mercedes Umaña,0
+255,Nueva Granada,0
+256,Ozatlán,0
+257,Puerto El Triunfo,0
+258,San Agustín,0
+259,San Buenaventura,0
+260,San Dionisio,0
+261,San Francisco Javier,0
+262,Santa Elena,0
+263,Santa María,0
+264,Santiago de María,0
+265,Tecapán,0
