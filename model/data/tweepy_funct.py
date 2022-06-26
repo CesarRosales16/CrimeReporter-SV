@@ -10,7 +10,7 @@ import json
 from csv import writer
 
 
-
+# Esta es la funcion basica con la que se extrae cada Tweet.
 def printtweetdata(n, ith_tweet):
     print()
     print(f"Tweet {n}:")
@@ -18,6 +18,7 @@ def printtweetdata(n, ith_tweet):
     print(f"Tweet Text:{ith_tweet[1]}")
     print(f"Hashtags Used:{ith_tweet[2]}")
 
+# Esta es la funcion con la que el bot procesa la data en un archivo .Json
 def processdatawit(n, ith_tweet):
 
      try:
@@ -29,7 +30,7 @@ def processdatawit(n, ith_tweet):
          print("Error, no detecta wit.ai el archivo.")
 
 
-
+# Esta es la funcion con la que se crea CSV en el cual se va a leer ya la informacion.
 def write_json(json_resp,filename='location_wit.csv'):
         location_tw =pd.DataFrame(columns=[
              'location', 'info'
@@ -47,6 +48,7 @@ def write_json(json_resp,filename='location_wit.csv'):
             #location_tw.loc[len(location_tw)] = ith_data
             #location_tw.to_csv(filename)
 
+# Esta es la funcion con la que se escriben registros en el CSV
 def append_list_as_row(file_name, list_of_elem):
     # Open file in append mode
     with open(file_name, 'a+', newline='') as write_obj:
@@ -57,7 +59,7 @@ def append_list_as_row(file_name, list_of_elem):
 
 
 
-# Extraer data haciendo uso de la api
+# Extraer data haciendo uso de la API
 def scrape( numtweet):
     # Crear un dataframe con pandas
     user_id="ultimahsv"
@@ -102,7 +104,7 @@ def scrape( numtweet):
     #db.drop_duplicates()
     db.to_csv(filename)
 
-
+# Esta es la funcion main.
 if __name__ == '__main__':
 
 
