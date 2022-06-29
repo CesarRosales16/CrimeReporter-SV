@@ -21,12 +21,13 @@ def printtweetdata(n, ith_tweet):
 # Esta es la funcion con la que el bot procesa la data en un archivo .Json
 def processdatawit(n, ith_tweet):
 
-     try:
+
+    try:
          print(f"Tweet {n}:")
          witre= Witcli.message(ith_tweet)
          print(str(witre))
          write_json(witre)
-     except:
+    except:
          print("Error, no detecta wit.ai el archivo.")
 
 
@@ -64,7 +65,7 @@ def scrape( numtweet):
     # Crear un dataframe con pandas
     user_id="ultimahsv"
     search_terms = "#SeguridadCiudadana AND ultimahsv"
-    date_since= "2022-06-20"
+    date_since= "2019-01-01"
     db = pd.DataFrame(columns=['username',
                                'text',
                                'hashtags'])
@@ -74,8 +75,8 @@ def scrape( numtweet):
     # se solicita la cantidad de tweets
     tweets = tweepy.Cursor(api.search_tweets,
                            #screen_name=user_id,
-                           q=search_terms,
-                           since_id=date_since,
+                           q=search_terms,#+" -filter:retweets",
+                           #ince_id=date_since,
                            tweet_mode='extended').items(numtweet)
 
 
@@ -100,18 +101,21 @@ def scrape( numtweet):
         printtweetdata(i, ith_tweet)
         processdatawit(i,ith_tweet[1])
         i = i + 1
-    filename = '../../Documents/GitHub/CrimeReporter-SV/model/data/scraped_tweets.csv'
+    filename = 'scraped_tweets.csv'
+
     #db.drop_duplicates()
     db.to_csv(filename)
 
 # Esta es la funcion main.
 if __name__ == '__main__':
+#aca llaves keys, falta agrregar .env
+
 
 
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     api = tweepy.API(auth)
 
-    numtweet = 200
+    numtweet = 1000
 
     scrape(numtweet)
     print('Scraping has completed!')
