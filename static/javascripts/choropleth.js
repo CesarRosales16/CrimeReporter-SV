@@ -191,9 +191,9 @@ for (let year = 2008; year <= 2018; year++) {
   });
 }
 
-//Se agrega solo para el año 2022
+//Se agrega solo para el año 2022 el mes de junio
 dropdown_etiquetas.push({
-  label: `2022`,
+  label: `Junio 2022`,
   collapsed: true,
   children: [
     { label: `Homicidio 2022`, layer: geojsonBase },
